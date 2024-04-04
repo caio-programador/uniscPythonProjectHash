@@ -1,4 +1,9 @@
+import faker
+from faker import Faker
+from random import randint
 from entities.ListaEncadeada import ListaEncadeada
+
+
 
 
 class HashTable:
@@ -37,4 +42,13 @@ class HashTable:
             return None
         else:
             return None
+
+
+    def geraDados(self):
+        fake = Faker() # instanciando o faker
+
+        # gerar 993 dados (+ 6 casos de teste = 999)
+        for _ in range(993):
+            self.inserir(randint(101, 9999), fake.name()) # nossos cassos de teste são abaixo de 101
+
 
