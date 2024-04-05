@@ -59,5 +59,14 @@ class HashTable:
         for _ in range(993):
             self.inserir(randint(101, 9999), fake.name()) # nossos casos de teste são abaixo de 101
 
+    def inserirCasosTeste(self):
+        # -------------- CASOS DE TESTE --------------
+        self.inserir(52, "Prendon")
+        self.inserir(29, "Gaio")
+        self.inserir(26, "Staubo")
+
+        self.inserir(7, "Kaua")
+        self.inserir(13, "Andréi")
+        # ---------------------------------------------
 
 

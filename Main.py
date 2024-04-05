@@ -17,10 +17,13 @@ def mostraEncontrado(encontrado, tempoDeProcuraHash, tempoDeProcura):
         print(f"Tempo de procura sem o hash: {tempoDeProcura}")
         print("--=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=")
 
+
 def main():
     table = HashTable(17)  # instanciando a hash table
 
     table.geraDados()
+
+    table.inserirCasosTeste()
     for _ in range(6):
         table.mostrar()
 
