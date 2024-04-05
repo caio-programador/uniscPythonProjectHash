@@ -3,42 +3,40 @@ from entities.ListaEncadeada import ListaEncadeada
 from time import time
 
 
+def mostraEncontrado(encontrado, tempoDeProcuraHash, tempoDeProcura):
+    if encontrado:  # se achou o encontrado printa ele e o tempo de resposta
+        print("--=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=")
+        ListaEncadeada.printRegistro(encontrado)
+        print(f"Tempo de procura com o hash: {tempoDeProcuraHash}")
+        print(f"Tempo de procura sem o hash: {tempoDeProcura}")
+        print("--=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=")
+    else:  # senão printa o tempo de resposta
+        print("--=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=")
+        print("Não existe nenhuma pessoa com esta conta bancária")
+        print(f"Tempo de procura com o hash: {tempoDeProcuraHash}")
+        print(f"Tempo de procura sem o hash: {tempoDeProcura}")
+        print("--=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=")
 
-table = HashTable(17) # instanciando a hash table
+def main():
+    table = HashTable(17)  # instanciando a hash table
 
-# -------------- CASOS DE TESTE --------------
-table.inserir(52, "Prendon")
-table.inserir(29, "Gaio")
-table.inserir(26, "Staubo")
+    table.geraDados()
+    for _ in range(6):
+        table.mostrar()
 
-table.inserir(7, "Kaua")
-table.inserir(13, "Andréi")
-# ---------------------------------------------
+        inicioHash = time()  # captura tempo no inicio
+        fimHash = time()  # captura tempo após executar funcão de busca
+        encontrado = table.search(int(input("Qual conta bancária deseja encontrar? ")))
+        tempoDeProcuraHash = fimHash - inicioHash  # calcula tempo de procura total
 
-table.geraDados()
+        inicio = time()  # captura tempo no inicio
+        table.searchSemHash(26)
+        fim = time()  # captura tempo após executar funcão de busca
+        tempoDeProcura = fim - inicio  # calcula tempo de procura total
 
-table.inserir(100, "Luigi")
+        print()
 
-inicioHash = time() # captura tempo no inicio
-encontrado = table.search(100)
-fimHash = time() # captura tempo após executar funcão de busca
-tempoDeProcuraHash = fimHash - inicioHash # calcula tempo de procura total
-
-inicio = time() # captura tempo no inicio
-table.searchSemHash(100)
-fim = time() # captura tempo após executar funcão de busca
-tempoDeProcura = fim - inicio # calcula tempo de procura total
-
-
-
-if encontrado:
-    print("--=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=")
-    ListaEncadeada.printNodo(encontrado)
-    print(f"Tempo de procura com o hash: {tempoDeProcuraHash}")
-    print(f"Tempo de procura sem o hash: {tempoDeProcura}")
-    print("--=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=")
-
-
-table.mostrar()
+        mostraEncontrado(encontrado, tempoDeProcuraHash, tempoDeProcura)
 
 
+main()
