@@ -43,6 +43,14 @@ class HashTable:
         else:
             return None
 
+    def searchSemHash(self, contaBancaria):
+        for listaEncadeada in self.tabela:
+            aux = listaEncadeada
+            while aux:
+                if aux.contaBancaria == contaBancaria:
+                    return aux
+                aux = aux.proximo
+        return None
 
     def geraDados(self):
         fake = Faker() # instanciando o faker
