@@ -8,7 +8,7 @@ class ListaEncadeada:
 
     @staticmethod
     def printLista(lista):
-        while lista:  # caminha pela lista e printa ela
+        while lista:  # caminha pela lista e printa cada elemento dela
             print(f'Conta Bancária: {lista.contaBancaria} Nome: {lista.nome}', end=" -> ")
             lista = lista.proximo
 

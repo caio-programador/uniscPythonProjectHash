@@ -4,16 +4,16 @@ from random import randint
 from entities.ListaEncadeada import ListaEncadeada
 
 
-class HashTable:
+class TabelaHash:
     def __init__(self, tamanho):  # construtor
         self.tamanho = tamanho
         self.tabela = [None] * tamanho # cria uma tabela com tudo none
 
-    def hashFunction(self, key): # função hash faz o mod do tamanho da lista
+    def funcaoHash(self, key): # função hash faz o mod do tamanho da lista
         return key % self.tamanho
 
     def inserir(self, contaBancaria, nome):  # função responsável por inserir na tabela
-        hashIndex = self.hashFunction(contaBancaria)  # pega o index onde será inserido
+        hashIndex = self.funcaoHash(contaBancaria)  # pega o index onde será inserido
         aux = self.tabela[hashIndex] # pega o local na tabela com o index
         if not aux:  # se estiver vazio então insere no início da lista
             self.tabela[hashIndex] = ListaEncadeada(contaBancaria, nome) # cria o nodo na lista
@@ -28,8 +28,8 @@ class HashTable:
             ListaEncadeada.printLista(self.tabela[i])  # printa a lista
             print()
 
-    def search(self, contaBancaria):  # função de busca utilizando hash
-        hashIndex = self.hashFunction(contaBancaria)  # pega o index
+    def busca(self, contaBancaria):  # função de busca utilizando hash
+        hashIndex = self.funcaoHash(contaBancaria)  # pega o index
         encontrado = self.tabela[hashIndex]  # pega o local na tabela com o index
         if encontrado:  # se achou então percorre a lista para procurar pela conta bancária desejada
             while encontrado:
@@ -41,7 +41,7 @@ class HashTable:
         else:
             return None  # retorna nada se não achou
 
-    def searchSemHash(self, contaBancaria):  # função de busca que não usa hash
+    def buscaSemHash(self, contaBancaria):  # função de busca que não usa hash
         for listaEncadeada in self.tabela:
             aux = listaEncadeada
             while aux:
@@ -59,12 +59,12 @@ class HashTable:
 
     def inserirCasosTeste(self):
         # -------------- CASOS DE TESTE --------------
-        self.inserir(52, "Prendon")
-        self.inserir(29, "Gaio")
-        self.inserir(26, "Staubo")
+        self.inserir(52, "Brendon")
+        self.inserir(29, "Caio")
+        self.inserir(26, "Staub")
 
-        self.inserir(7, "Kaua")
-        self.inserir(13, "Andréi")
+        self.inserir(7, "Kaue")
+        self.inserir(13, "Andrei")
         # ---------------------------------------------
 
 

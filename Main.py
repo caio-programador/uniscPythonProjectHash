@@ -1,4 +1,4 @@
-from entities.HashTable import HashTable
+from entities.TabelaHash import TabelaHash
 from entities.ListaEncadeada import ListaEncadeada
 from time import time
 
@@ -12,7 +12,7 @@ def mostraEncontrado(encontrado, tempoDeProcuraHash, tempoDeProcura):
         print("Não existe nenhuma pessoa com esta conta bancária")
 
     print(f"Tempo de procura com o hash: {tempoDeProcuraHash} segundo(s) ou " + "%.9f segundo(s)" % tempoDeProcuraHash)
-    print(f"Tempo de procura sem o hash: {tempoDeProcura} segundos(s) ou " + "%.9f segundo(s)" % tempoDeProcura)
+    print(f"Tempo de procura sem o hash: {tempoDeProcura} segundo(s) ou " + "%.9f segundo(s)" % tempoDeProcura)
     print("--=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=")
     print()
     input("Pressione qualquer tecla...  ")
@@ -20,21 +20,21 @@ def mostraEncontrado(encontrado, tempoDeProcuraHash, tempoDeProcura):
 
 
 def main():
-    table = HashTable(17)  # instanciando a hash table
+    tabela = TabelaHash(17)  # instanciando a hash tabela
 
-    table.geraDados()
+    tabela.geraDados()
 
-    table.inserirCasosTeste()
+    tabela.inserirCasosTeste()
     for _ in range(6):
-        table.mostrar()
-
+        tabela.mostrar()
+        contaBancaria = int(input("Qual conta bancária deseja buscar? "))
         inicioHash = time()  # captura tempo no inicio
+        encontrado = tabela.busca(contaBancaria)
         fimHash = time()  # captura tempo após executar funcão de busca
-        encontrado = table.search(int(input("Qual conta bancária deseja encontrar? ")))
         tempoDeProcuraHash = fimHash - inicioHash  # calcula tempo de procura total
 
         inicio = time()  # captura tempo no inicio
-        table.searchSemHash(26)
+        tabela.buscaSemHash(contaBancaria)
         fim = time()  # captura tempo após executar funcão de busca
         tempoDeProcura = fim - inicio  # calcula tempo de procura total
 
