@@ -4,18 +4,19 @@ from time import time
 
 
 def mostraEncontrado(encontrado, tempoDeProcuraHash, tempoDeProcura):
+    print("--=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=")
+
     if encontrado:  # se achou o encontrado printa ele e o tempo de resposta
-        print("--=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=")
         ListaEncadeada.printRegistro(encontrado)
-        print(f"Tempo de procura com o hash: {tempoDeProcuraHash}")
-        print(f"Tempo de procura sem o hash: {tempoDeProcura}")
-        print("--=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=")
     else:  # senão printa o tempo de resposta
-        print("--=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=")
         print("Não existe nenhuma pessoa com esta conta bancária")
-        print(f"Tempo de procura com o hash: {tempoDeProcuraHash}")
-        print(f"Tempo de procura sem o hash: {tempoDeProcura}")
-        print("--=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=")
+
+    print(f"Tempo de procura com o hash: {tempoDeProcuraHash} segundo(s) ou " + "%.9f segundo(s)" % tempoDeProcuraHash)
+    print(f"Tempo de procura sem o hash: {tempoDeProcura} segundos(s) ou " + "%.9f segundo(s)" % tempoDeProcura)
+    print("--=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=")
+    print()
+    input("Pressione qualquer tecla...  ")
+    print()
 
 
 def main():

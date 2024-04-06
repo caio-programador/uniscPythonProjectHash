@@ -4,8 +4,6 @@ from random import randint
 from entities.ListaEncadeada import ListaEncadeada
 
 
-
-
 class HashTable:
     def __init__(self, tamanho):  # construtor
         self.tamanho = tamanho
@@ -17,7 +15,7 @@ class HashTable:
     def inserir(self, contaBancaria, nome):  # função responsável por inserir na tabela
         hashIndex = self.hashFunction(contaBancaria)  # pega o index onde será inserido
         aux = self.tabela[hashIndex] # pega o local na tabela com o index
-        if not aux: # se estiver vazio então insere no início da lista
+        if not aux:  # se estiver vazio então insere no início da lista
             self.tabela[hashIndex] = ListaEncadeada(contaBancaria, nome) # cria o nodo na lista
         else:  # senão, insere no fim da lista
             while aux.proximo:
