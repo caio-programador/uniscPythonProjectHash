@@ -1,4 +1,3 @@
-import faker
 from faker import Faker
 from random import randint
 from entities.ListaEncadeada import ListaEncadeada
@@ -7,16 +6,16 @@ from entities.ListaEncadeada import ListaEncadeada
 class TabelaHash:
     def __init__(self, tamanho):  # construtor
         self.tamanho = tamanho
-        self.tabela = [None] * tamanho # cria uma tabela com tudo none
+        self.tabela = [None] * tamanho  # cria uma tabela com tudo none
 
-    def funcaoHash(self, key): # função hash faz o mod do tamanho da lista
+    def funcaoHash(self, key):  # função hash faz o mod do tamanho da lista
         return key % self.tamanho
 
     def inserir(self, contaBancaria, nome):  # função responsável por inserir na tabela
         hashIndex = self.funcaoHash(contaBancaria)  # pega o index onde será inserido
-        aux = self.tabela[hashIndex] # pega o local na tabela com o index
+        aux = self.tabela[hashIndex]  # pega o local na tabela com o index
         if not aux:  # se estiver vazio então insere no início da lista
-            self.tabela[hashIndex] = ListaEncadeada(contaBancaria, nome) # cria o nodo na lista
+            self.tabela[hashIndex] = ListaEncadeada(contaBancaria, nome)  # cria o nodo na lista
         else:  # senão, insere no fim da lista
             while aux.proximo:
                 aux = aux.proximo
@@ -51,18 +50,17 @@ class TabelaHash:
         return None
 
     def geraDados(self):  # função responsável por preencher nossa base de dados
-        fake = Faker() # instanciando o faker
+        fake = Faker()  # instanciando o faker
 
         # gerar 993 dados
-        for _ in range(993):
-            self.inserir(randint(101, 9999), fake.name()) # nossos casos de teste são abaixo de 101
+        for _ in range(999):
+            self.inserir(randint(101, 9999), fake.name())  # nossos casos de teste são abaixo de 101
 
     def inserirCasosTeste(self):
         # -------------- CASOS DE TESTE --------------
         self.inserir(52, "Brendon")
         self.inserir(29, "Caio")
         self.inserir(26, "Staub")
-
         self.inserir(7, "Kaue")
         self.inserir(13, "Andrei")
         # ---------------------------------------------

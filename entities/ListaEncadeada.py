@@ -13,5 +13,5 @@ class ListaEncadeada:
             lista = lista.proximo
 
     @staticmethod
-    def printRegistro(registro):
+    def printRegistro(registro):  # função de printar um elemento da lista
         print(f'Conta Bancária: {registro.contaBancaria} Nome: {registro.nome}')

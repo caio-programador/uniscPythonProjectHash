@@ -1,6 +1,6 @@
 from entities.TabelaHash import TabelaHash
 from entities.ListaEncadeada import ListaEncadeada
-from time import time
+from time import time, sleep
 
 
 def mostraEncontrado(encontrado, tempoDeProcuraHash, tempoDeProcura):
@@ -15,7 +15,8 @@ def mostraEncontrado(encontrado, tempoDeProcuraHash, tempoDeProcura):
     print(f"Tempo de procura sem o hash: {tempoDeProcura} segundo(s) ou " + "%.9f segundo(s)" % tempoDeProcura)
     print("--=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=")
     print()
-    input("Pressione qualquer tecla...  ")
+    print("Aguarde...")
+    sleep(3)
     print()
 
 
